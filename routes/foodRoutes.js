@@ -28,4 +28,14 @@ app.post("/food", async (req, res) => {
   }
 });
 
+// データの編集
+app.patch("/food/:id", async (req, res) => {
+  try {
+    await foodModel.findByIdAndUpdate(req.params.id, req.body);
+    await foodModel.save();
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = app;
