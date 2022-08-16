@@ -3,6 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const foodRouter = require("./routes/foodRoutes");
+
+app.use(foodRouter);
+
 // データベース接続
 mongoose
   .connect(process.env.MONGOURL)
