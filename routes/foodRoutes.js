@@ -38,4 +38,13 @@ app.patch("/food/:id", async (req, res) => {
   }
 });
 
+// データの削除
+app.delete("/food/:id", async (req, res) => {
+  try {
+    await foodModel.findByIdAndDelete(req.params.id);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = app;
